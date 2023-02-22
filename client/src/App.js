@@ -1,4 +1,4 @@
-import './App.css';
+import "./style.scss"
 import {
   createBrowserRouter,
   RouterProvider,
@@ -11,13 +11,14 @@ import Register from './pages/Register';
 import Single from './pages/Single';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import Write from './pages/Write';
 
 const Layout = () => {
   return (
     <>
-      <Navbar/>
-      <Outlet/>
-      <Footer/>
+      <Navbar />
+      <Outlet />
+      <Footer />
     </>
   );
 };
@@ -25,32 +26,38 @@ const Layout = () => {
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Layout/>,
+    element: <Layout />,
     children: [
       {
         path: '/',
-        element: <Home/>
+        element: <Home />
       },
       {
-        path: '/login',
-        element: <Login/>
+        path: '/write',
+        element: <Write />
       },
       {
-        path: '/register',
-        element: <Register/>
-      },
-      {
-        path: '/post/:postId',
-        element: <Single/>
+        path: '/single',
+        element: <Single />
       }
     ]
-  }
+  },
+  {
+    path: '/login',
+    element: <Login />
+  },
+  {
+    path: '/register',
+    element: <Register />
+  },
 ]);
 
 function App() {
   return (
-    <div className="App">
-      <RouterProvider router={router}/>
+    <div className="app">
+      <div className="container">
+        <RouterProvider router={router} />
+      </div>
     </div>
   );
 }
